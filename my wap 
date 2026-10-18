@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Business</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Arial,sans-serif;
+  background:#f3f5fb;color:#172554
+}
+header{
+  background:#172554;color:white;
+  padding:22px 18px;border-radius:0 0 24px 24px
+}
+header h2{margin:0}
+main{padding:22px;max-width:480px;margin:auto}
+.card{
+  background:white;padding:22px;
+  border-radius:18px;margin-top:20px;
+  box-shadow:0 5px 20px #17255412
+}
+input{
+  width:100%;padding:14px;margin:8px 0;
+  border:1px solid #ccd3e1;border-radius:10px;
+  font-size:16px
+}
+button{
+  width:100%;padding:14px;margin-top:10px;
+  border:0;border-radius:10px;
+  background:#315bea;color:white;
+  font-size:16px;font-weight:bold
+}
+.switch{background:#e8edff;color:#2344ad}
+p{line-height:1.6;color:#596579}
+#message{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<header>
+  <h2>My Business</h2>
+  <p style="color:white">Aapke business ki nayi pehchaan</p>
+</header>
+<main>
+  <section class="card" id="home">
+    <h2>Welcome!</h2>
+    <p>Hamari website par aapka swagat hai.</p>
+    <button onclick="show('login')">Login</button>
+    <button class="switch" onclick="show('signup')">
+      Naya Account Banayein
+    </button>
+  </section>
+
+  <section class="card" id="login" hidden>
+    <h2>Login</h2>
+    <form onsubmit="loginDemo(event)">
+      <input type="email" placeholder="Email address" required>
+      <input type="password" placeholder="Password"
+        minlength="6" required>
+      <button type="submit">Login Karein</button>
+    </form>
+    <button class="switch" onclick="show('home')">Wapas Home</button>
+  </section>
+
+  <section class="card" id="signup" hidden>
+    <h2>Sign Up</h2>
+    <form onsubmit="signupDemo(event)">
+      <input id="person" placeholder="Aapka naam" required>
+      <input type="email" placeholder="Email address" required>
+      <input type="password" placeholder="Password"
+        minlength="6" required>
+      <button type="submit">Account Banayein</button>
+    </form>
+    <button class="switch" onclick="show('home')">Wapas Home</button>
+  </section>
+  <p id="message"></p>
+</main>
+<script>
+function show(id){
+  document.querySelectorAll('main section').forEach(
+    s=>s.hidden=true
+  );
+  document.getElementById(id).hidden=false;
+  document.getElementById('message').textContent='';
+}
+function signupDemo(e){
+  e.preventDefault();
+  document.getElementById('message').textContent=
+    'Demo taiyar hai. Asli account ke liye secure login service jodni hogi.';
+}
+function loginDemo(e){
+  e.preventDefault();
+  document.getElementById('message').textContent=
+    'Yeh demo login hai. Abhi asli login service connect nahi hai.';
+}
+</script>
+</body>
+</html>
